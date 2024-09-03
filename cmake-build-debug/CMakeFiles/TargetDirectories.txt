@@ -1,0 +1,3 @@
+C:/Users/mirco/Nextcloud/3- Resources/Code/c++_project/tictactoe/cmake-build-debug/CMakeFiles/tictactoe.dir
+C:/Users/mirco/Nextcloud/3- Resources/Code/c++_project/tictactoe/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/mirco/Nextcloud/3- Resources/Code/c++_project/tictactoe/cmake-build-debug/CMakeFiles/rebuild_cache.dir
