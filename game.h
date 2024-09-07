@@ -26,9 +26,11 @@ public:
     [[nodiscard]] size_t getCol() const;
     [[nodiscard]] GameState getStatus() const;
     [[nodiscard]] Player getPlayer() const;
+    [[nodiscard]] Player getCell(size_t r, size_t c) const;
 
-    void play(size_t row, size_t col);
+    void play();
     bool isGameOver(); // Vérifie l'état actuel du jeu
+    Grid _grid;
 
 
 private:
@@ -37,16 +39,17 @@ private:
 
     GameState _state;
     Player _currentPlayer;
-    Grid _grid;
-    size_t nbOfPlay;
+    size_t _nbOfPlay;
 
-    void makeMove(char wichPlayer); // Fonction qui va demander au user de choisir une position sur la grille et controler si déja occuper ensuite va appeler fonction display position
+    void makeMove(Player whichPlayer); // Fonction qui va demander au user de choisir une position sur la grille et controler si déja occuper ensuite va appeler fonction display position
     void displayPositionOnTheGrid(uint pos1, uint pos2); // Va afficher la position voulu dans la grille
-    void changePlayer(); // fonction switch à la fin de chaque coup, chaque fois que selectposition
+    Player changePlayer(); // fonction switch à la fin de chaque coup, chaque fois que selectposition
     [[nodiscard]] bool checkWinRow() const;
     [[nodiscard]] bool checkWinCol() const;
     [[nodiscard]] bool checkWinVerticalUp() const;
     [[nodiscard]] bool checkWinVerticalDown() const;
+
+
 };
 
 #endif //TICTACTOE_GAME_H
@@ -66,3 +69,6 @@ private:
  * true -> appIsRunning = false
  * false -> changePlayer()
  */
+
+// TODO Mise en place d'un compteur de nombre de round jusqu'à 3 et ensuite check de isGameOver ?
+// TODO Check entrée utilisateur POSition

@@ -3,47 +3,53 @@
 
 Game::Game() :
     ROW(3), COL(3),
-    _currentPlayer(Player::PLAYER_1),
+    _currentPlayer(Game::Player::PLAYER_1),
     _state(GameState::IN_PROGRESS),
-    _grid(ROW, std::vector<Player>(COL, Game::Player::NONE)), // On initialise la matrice _grid(3, vector<Player>(3, '*') )
-    nbOfPlay(0) {}
+    _nbOfPlay(0) {
+    _grid = std::vector<std::vector<Player>>(ROW, std::vector<Player>(COL, Game::Player::NONE));
 
-Game::Game(size_t row, size_t col) : ROW(row), COL(col) {}
+}
+
+Game::Game(size_t row, size_t col) :
+    ROW(row), COL(col),
+    _currentPlayer(Game::Player::PLAYER_1),
+    _state(GameState::IN_PROGRESS),
+    _nbOfPlay(0) {
+    _grid = std::vector<std::vector<Player>>(ROW, std::vector<Player>(COL, Game::Player::NONE));
+}
 
 
 Game::GameState Game::getStatus() const { return _state; }
-Game::Player Game::getPlayer() const {}
-
+Game::Player Game::getPlayer() const { return _currentPlayer;}
 size_t Game::getRow() const { return ROW; }
 size_t Game::getCol() const { return COL; }
 
-void Game::play(size_t row, size_t col) {}
+Game::Player Game::getCell(size_t row, size_t col) const { return _grid[row][col]; }
 
-void Game::displayPositionOnTheGrid(uint pos1, uint pos2) {
-    //grid[pos1][pos2];
-}
-void Game::makeMove(char wichPlayer) {
-    const char ROND = 'O';
-    const char CROIX = 'X';
+void Game::play() { makeMove(getPlayer()); }
+
+void Game::displayPositionOnTheGrid(uint pos1, uint pos2) { _grid[pos1][pos2] = _currentPlayer; }
+
+void Game::makeMove(Game::Player whichPlayer) {
     uint pos1, pos2;
-    if (wichPlayer == ROND) {
-    std::cout << "Joueur " << ROND << ", choisir position : ";
+    std::cout << (whichPlayer == Player::PLAYER_1 ? "Joueur O" : "Joueur X") << ", a vous de jouer" << std::endl;
+    std::cout << "Position 1 :  ";
     std::cin >> pos1;
+    std::cout << std::endl << "Position 2 :  ";
     std::cin >> pos2;
     displayPositionOnTheGrid(pos1, pos2);
-    } else {
-        std::cout << "Joueur " << CROIX << ", a vous de jouer";
-        displayPositionOnTheGrid(1, 3);
-    }
+    changePlayer(); // Change le joueur après le coup
     }
 
-void Game::changePlayer() {}
+Game::Player Game::changePlayer() {
+    return _currentPlayer = (_currentPlayer == Game::Player::PLAYER_1) ? Game::Player::PLAYER_2 :
+                                                                         Game::Player::PLAYER_1;
+    }
+
 
 bool Game::isGameOver() {}
 
-bool Game::checkWinRow() const {
-    return true;
-}
+bool Game::checkWinRow() const { return true; }
 bool Game::checkWinCol() const {}
 bool Game::checkWinVerticalUp() const {}
 bool Game::checkWinVerticalDown() const {}

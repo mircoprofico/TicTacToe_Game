@@ -14,12 +14,11 @@ enum class Player {
 
 int main() {
     cout << "Jeu du TicTacToe" << endl;
-    cout << endl;
 
-    const int row = 3;
-    const int col = 3;
+    const int ROW = 3;
+    const int COL = 3;
 
-    Game game(row,col);
+    Game game(ROW, COL);
     Display display(game);
     display.run();
     cout << endl;
