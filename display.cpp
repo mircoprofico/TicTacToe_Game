@@ -2,14 +2,25 @@
 #include "display.h"
 
 Display::Display(const Game& game) : game(game){
-    appIsRunning = true;
 }
 
 void Display::run() {
-    while(appIsRunning){
+    while (game.isRunning()) {
         std::cout << std::endl;
         displayGrid(ROW, COL);
+        std::cout << std::endl;
         game.play();
+    }
+    std::cout << std::endl;
+    displayGrid(ROW, COL);
+    std::cout << std::endl << "Game Over, ";
+    switch (game.getStatus()) {
+        case Game::GameState::PLAYER_1_WIN :
+            std::cout << "Player X Win !";
+        case Game::GameState::PLAYER_2_WIN :
+            std::cout << "Player O Win !";
+        case Game::GameState::DRAW :
+            std::cout << "Draw";
     }
 }
 

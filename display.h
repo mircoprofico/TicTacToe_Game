@@ -13,8 +13,6 @@ private:
     const size_t ROW = game.getRow();
     const size_t COL = game.getCol();
 
-    bool appIsRunning;
-
     void displayGrid(size_t row, size_t col);
 };
 

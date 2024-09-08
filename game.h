@@ -27,6 +27,7 @@ public:
     [[nodiscard]] GameState getStatus() const;
     [[nodiscard]] Player getPlayer() const;
     [[nodiscard]] Player getCell(size_t r, size_t c) const;
+    [[nodiscard]] bool isRunning() const;
 
     void play();
     bool isGameOver(); // Vérifie l'état actuel du jeu
@@ -37,6 +38,7 @@ private:
     const size_t ROW;
     const size_t COL;
 
+    bool _appIsRunning;
     GameState _state;
     Player _currentPlayer;
     size_t _nbOfPlay;
