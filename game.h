@@ -46,7 +46,7 @@ private:
     void makeMove(Player whichPlayer); // Fonction qui va demander au user de choisir une position sur la grille et controler si déja occuper ensuite va appeler fonction display position
     void displayPositionOnTheGrid(uint pos1, uint pos2); // Va afficher la position voulu dans la grille
     Player changePlayer(); // fonction switch à la fin de chaque coup, chaque fois que selectposition
-    [[nodiscard]] bool checkWinRow() const;
+    [[nodiscard]] bool checkWinRow();
     [[nodiscard]] bool checkWinCol() const;
     [[nodiscard]] bool checkWinVerticalUp() const;
     [[nodiscard]] bool checkWinVerticalDown() const;
