@@ -35,8 +35,8 @@ public:
 
 
 private:
-    const size_t ROW;
-    const size_t COL;
+    const int ROW;
+    const int COL;
 
     bool _appIsRunning;
     GameState _state;
@@ -47,9 +47,9 @@ private:
     void displayPositionOnTheGrid(uint pos1, uint pos2); // Va afficher la position voulu dans la grille
     Player changePlayer(); // fonction switch à la fin de chaque coup, chaque fois que selectposition
     [[nodiscard]] bool checkWinRow();
-    [[nodiscard]] bool checkWinCol() const;
-    [[nodiscard]] bool checkWinVerticalUp() const;
-    [[nodiscard]] bool checkWinVerticalDown() const;
+    [[nodiscard]] bool checkWinCol();
+    [[nodiscard]] bool checkWinVerticalUp();
+    [[nodiscard]] bool checkWinVerticalDown();
 
 
 };

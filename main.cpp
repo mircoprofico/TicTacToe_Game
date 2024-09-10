@@ -12,13 +12,28 @@ enum class Player {
     PLAYER2
 };
 
-int main() {
+int main(int argc, char* argv[]) {
+
+    // Pour lancer le jeu utiliser le terminal :
+    // g++ main.cpp game.cpp display.cpp -o main
+    // ./main 3 3
+
+    if (argc != 3) {
+        std::cerr << "Usage: " << argv[0] << " <nombre de lignes> <nombre de colonnes>" << std::endl;
+        return EXIT_FAILURE;
+    }
+    // Convertit les arguments du terminal en entiers pour les dimensions
+    int row = std::stoi(argv[1]);
+    int col = std::stoi(argv[2]);
+
+    if (row <= 0 || col <= 0) {
+        std::cerr << "Les dimensions de la grille doivent être des entiers positifs." << std::endl;
+        return EXIT_FAILURE;
+    }
     cout << "Jeu du TicTacToe" << endl;
 
-    const int ROW = 3;
-    const int COL = 3;
 
-    Game game(ROW, COL);
+    Game game(row, col);
     Display display(game);
     display.run();
     cout << endl;
