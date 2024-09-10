@@ -1,42 +1,29 @@
-#include <iostream>
 #include <cstdlib>
-#include <vector>
 #include "game.h"
 #include "display.h"
 
-using namespace std;
+//#include <iostream> // #3 Missing import for cerr
+//#include <exception>    // #3 Missing import for exception
+//#include <cstdlib>  // #3 Missing import for EXIT_SUCCESS
 
-enum class Player {
-    NONE,
-    PLAYER1,
-    PLAYER2
-};
+int main(int argc, char* argv[]) {  // Could use the [[maybe_unused]] compiler directive
+    (void)argc; // #1 Okay for SDL but a comment have been appreciated. It is really ugly and unusual.
+    (void)argv;
 
-int main(int argc, char* argv[]) {
+    const size_t ROW = 3;
+    const size_t COL = 3;
+    const size_t NB_ADJ_CELL_FOR_WIN = 3;
 
-    // Pour lancer le jeu utiliser le terminal :
-    // g++ main.cpp game.cpp display.cpp -o main
-    // ./main 3 3
+    try
+    {
+        Game  logic(ROW, COL);
+        DisplayTTT display(logic);
 
-    if (argc != 3) {
-        std::cerr << "Usage: " << argv[0] << " <nombre de lignes> <nombre de colonnes>" << std::endl;
-        return EXIT_FAILURE;
+        display.run();
     }
-    // Convertit les arguments du terminal en entiers pour les dimensions
-    int row = std::stoi(argv[1]);
-    int col = std::stoi(argv[2]);
-
-    if (row <= 0 || col <= 0) {
-        std::cerr << "Les dimensions de la grille doivent être des entiers positifs." << std::endl;
-        return EXIT_FAILURE;
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';  // #3 Should have used std::endl instead of \n (compatibility)
     }
-    cout << "Jeu du TicTacToe" << endl;
-
-
-    Game game(row, col);
-    Display display(game);
-    display.run();
-    cout << endl;
-
-    return EXIT_SUCCESS;
+    return EXIT_SUCCESS;    // #9 It should not be a success if there has been an error
 }
