@@ -1,7 +1,7 @@
 #include "display.h"
 
 DisplayTTT::DisplayTTT()    // #2 What is this formatting?? Eurk
-        : _logicGame(LogicTTT()), _appIsRunning(false)
+        : _logicGame(Game()), _appIsRunning(false)
         , _window(nullptr), _renderer(nullptr)  // These pointers could be initialized with a default value in the class instead of in each constructor
         ,_imagePlayer1(nullptr), _imagePlayer2(nullptr)
 {
@@ -100,9 +100,9 @@ void DisplayTTT::render()
     Game::GameState status = _logicGame.getStatus();;  // Oh! An additional ; on this line! :O
     if (status == Game::GameState::PLAYER_1_WIN)
         addGrid(255, 0, 0, SDL_ALPHA_OPAQUE);
-    else if (status == LogicTTT::GameStatus::PLAYER_2_WIN)
+    else if (status == Game::GameState::PLAYER_2_WIN)
         addGrid(0, 0, 255, SDL_ALPHA_OPAQUE);
-    else if (status == LogicTTT::GameStatus::DRAW)
+    else if (status == Game::GameState::DRAW)
         addGrid(255, 0, 255, SDL_ALPHA_OPAQUE);
     else
         addGrid(0, 0, 0, SDL_ALPHA_OPAQUE);

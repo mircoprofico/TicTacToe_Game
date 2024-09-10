@@ -51,19 +51,22 @@ build cmake_object_order_depends_target_tictactoe: phony || CMakeFiles/tictactoe
 
 build CMakeFiles/tictactoe.dir/main.cpp.obj: CXX_COMPILER__tictactoe_unscanned_Debug C$:/Users/mirco/Nextcloud/3-$ Resources/Code/c++_project/tictactoe/main.cpp || cmake_object_order_depends_target_tictactoe
   DEP_FILE = CMakeFiles\tictactoe.dir\main.cpp.obj.d
-  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  FLAGS = -Wconversion -Wall -Wextra -pedantic -std=c++20 -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -Ic:/libs/SDL2-2.28.5/include
   OBJECT_DIR = CMakeFiles\tictactoe.dir
   OBJECT_FILE_DIR = CMakeFiles\tictactoe.dir
 
 build CMakeFiles/tictactoe.dir/game.cpp.obj: CXX_COMPILER__tictactoe_unscanned_Debug C$:/Users/mirco/Nextcloud/3-$ Resources/Code/c++_project/tictactoe/game.cpp || cmake_object_order_depends_target_tictactoe
   DEP_FILE = CMakeFiles\tictactoe.dir\game.cpp.obj.d
-  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  FLAGS = -Wconversion -Wall -Wextra -pedantic -std=c++20 -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -Ic:/libs/SDL2-2.28.5/include
   OBJECT_DIR = CMakeFiles\tictactoe.dir
   OBJECT_FILE_DIR = CMakeFiles\tictactoe.dir
 
 build CMakeFiles/tictactoe.dir/display.cpp.obj: CXX_COMPILER__tictactoe_unscanned_Debug C$:/Users/mirco/Nextcloud/3-$ Resources/Code/c++_project/tictactoe/display.cpp || cmake_object_order_depends_target_tictactoe
   DEP_FILE = CMakeFiles\tictactoe.dir\display.cpp.obj.d
-  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  FLAGS = -Wconversion -Wall -Wextra -pedantic -std=c++20 -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -Ic:/libs/SDL2-2.28.5/include
   OBJECT_DIR = CMakeFiles\tictactoe.dir
   OBJECT_FILE_DIR = CMakeFiles\tictactoe.dir
 
@@ -75,9 +78,9 @@ build CMakeFiles/tictactoe.dir/display.cpp.obj: CXX_COMPILER__tictactoe_unscanne
 #############################################
 # Link the executable tictactoe.exe
 
-build tictactoe.exe: CXX_EXECUTABLE_LINKER__tictactoe_Debug CMakeFiles/tictactoe.dir/main.cpp.obj CMakeFiles/tictactoe.dir/game.cpp.obj CMakeFiles/tictactoe.dir/display.cpp.obj
-  FLAGS = -g
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+build tictactoe.exe: CXX_EXECUTABLE_LINKER__tictactoe_Debug CMakeFiles/tictactoe.dir/main.cpp.obj CMakeFiles/tictactoe.dir/game.cpp.obj CMakeFiles/tictactoe.dir/display.cpp.obj | c$:/libs/SDL2-2.28.5/lib/x64/SDL2main.lib c$:/libs/SDL2-2.28.5/lib/x64/SDL2.lib
+  FLAGS = -Wconversion -Wall -Wextra -pedantic -std=c++20 -g
+  LINK_LIBRARIES = c:/libs/SDL2-2.28.5/lib/x64/SDL2main.lib  c:/libs/SDL2-2.28.5/lib/x64/SDL2.lib  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\tictactoe.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
