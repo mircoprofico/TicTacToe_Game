@@ -30,7 +30,7 @@ public:
     [[nodiscard]] bool isRunning() const;
 
     void play();
-    bool isGameOver(); // Vérifie l'état actuel du jeu
+    bool isGameOver(); 
     Grid _grid;
 
 
@@ -43,9 +43,9 @@ private:
     Player _currentPlayer;
     size_t _nbOfPlay;
 
-    void makeMove(Player whichPlayer); // Fonction qui va demander au user de choisir une position sur la grille et controler si déja occuper ensuite va appeler fonction display position
-    void displayPositionOnTheGrid(uint pos1, uint pos2); // Va afficher la position voulu dans la grille
-    Player changePlayer(); // fonction switch à la fin de chaque coup, chaque fois que selectposition
+    void makeMove(Player whichPlayer); 
+    void displayPositionOnTheGrid(uint pos1, uint pos2); 
+    Player changePlayer(); 
     [[nodiscard]] bool checkWinRow();
     [[nodiscard]] bool checkWinCol();
     [[nodiscard]] bool checkWinVerticalUp();
@@ -55,22 +55,3 @@ private:
 };
 
 #endif //TICTACTOE_GAME_H
-
-
-/*
- * début
- * affichage grille
- * fonction makeMove() activé : va demander au user1 de donner 2 positions
- * displayPosition() : va afficher dans la grille
- * Check ligne
- * changePlayer();
- * makeMove()
- * displayPosition()
- * checkLigne quand compteur nb de round = 3
- * isGameOver()  ?
- * true -> appIsRunning = false
- * false -> changePlayer()
- */
-
-// TODO Mise en place d'un compteur de nombre de round jusqu'à 3 et ensuite check de isGameOver ?
-// TODO Check entrée utilisateur POSition
